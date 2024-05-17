@@ -6,17 +6,7 @@ on:
             codename:
                 type: choice
                 description: |
-                    Codename for ChromeOS build. 
-
-                    # Intel Processor
-                    3rd gen or older: samus
-                    4th and 5th gen: leona
-                    6th gen to 9th gen: shyvana
-                    10th gen: jinlon
-                    11th gen and newer: voxel 
-                    
-                    # AMD Processor
-                    Ryzen: gumboz
+                    Codename for ChromeOS build. Check README for information on choosing a codename.
                 required: true
                 options: [voxel, gumboz, jinlon, shyvana, leona, samus]
 
