@@ -28,7 +28,7 @@ jobs:
     needs: release
     strategy:
       matrix:
-        codename: [samus, rammus, shyvana, jinlon, voxel, gumboz]
+        codename: [samus, leona, shyvana, jinlon, voxel, gumboz]
     env:
       RELEASE_VERSION: ${{ needs.release.outputs.version }}
     steps:
