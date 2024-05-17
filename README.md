@@ -2,6 +2,8 @@
 
 GitHub Actions workflow to build generic ChromeOS image for amd64 devices.
 
+The script will download latest stable recovery image from https://cros.tech/ for the given codename and latest brunch (https://github.com/sebanc/brunch) release. It will then extract the recovery image and build a generic ChromeOS image for amd64 devices.
+
 ## Inputs
 
 ### `codename`
