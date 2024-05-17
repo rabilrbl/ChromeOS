@@ -103,7 +103,9 @@ download_brunch() {
             echo "Failed to download brunch"
             exit 1
         else
-            echo "Failed to download brunch. Retrying..."
+            RANDOM_SEC=$((1 + RANDOM % 5))
+            echo "Failed to download brunch. Retrying in $RANDOM_SEC seconds"
+            sleep $RANDOM_SEC
             D_BRUNCH_COUNT=$((D_BRUNCH_COUNT+1))
             download_brunch
             return
