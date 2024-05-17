@@ -177,7 +177,11 @@ build_chromos_img() {
 install_dependencies
 # if previous command is successful, then only proceed
 if [ $? -eq 0 ]; then
-    download_chromeos "voxel"
+    if [ -z "$1" ]; then
+        echo "Please provide Chrome OS code name"
+        exit 1
+    fi
+    download_chromeos $1
     if [ $? -eq 0 ]; then
         download_brunch
         if [ $? -eq 0 ]; then
