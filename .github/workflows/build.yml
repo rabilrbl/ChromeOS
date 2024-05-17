@@ -1,50 +1,39 @@
 name: Build ChromeOS
 
 on:
-  workflow_dispatch:
+    workflow_dispatch:
+        inputs:
+            codename:
+                type: choice
+                description: |
+                    Codename for ChromeOS build. 
 
-permissions: 
-    contents: write
+                    # Intel Processor
+                    3rd gen or older: samus
+                    4th and 5th gen: leona
+                    6th gen to 9th gen: shyvana
+                    10th gen: jinlon
+                    11th gen and newer: voxel 
+                    
+                    # AMD Processor
+                    Ryzen: gumboz
+                required: true
+                options: [samus, leona, shyvana, jinlon, voxel, gumboz]
 
 jobs:
-  release:
-    runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.create_release.outputs.version }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Create release
-        id: create_release
-        run: |
-          GVERSION=v$(date +'%Y%m%d.%H%M')
-          gh release create $GVERSION -t $GVERSION -n "Release $GVERSION"
-          echo "version=$GVERSION" >> $GITHUB_OUTPUT
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  build:
-    runs-on: ubuntu-latest
-    needs: release
-    strategy:
-      matrix:
-        codename: [samus, leona, shyvana, jinlon, voxel, gumboz]
-    env:
-      RELEASE_VERSION: ${{ needs.release.outputs.version }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    build:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v4
 
-      - name: Build ChromeOS
-        run: |
-          chmod +x build.sh
-          ./build.sh ${{ matrix.codename }}
-
-      - name: Upload File
-        if: success()
-        run: |
-          mv chromeos/chromeos.img.7z chromeos-${{env.RELEASE_VERSION}}-${{ matrix.codename }}.7z
-          ls -l
-          gh release upload ${{env.RELEASE_VERSION}} chromeos-${{env.RELEASE_VERSION}}-${{ matrix.codename }}.7z
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          - name: Build ChromeOS
+            run: |
+              chmod +x build.sh
+              ./build.sh ${{ inputs.codename }}
+          
+          - name: Upload image
+            uses: actions/upload-artifact@v4
+            with:
+              name: chromeos-${{ inputs.codename }}
+              path: chromeos/chromeos.img
