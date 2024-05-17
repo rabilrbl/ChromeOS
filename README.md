@@ -1,6 +1,6 @@
 # Build ChromeOS
 
-GitHub Actions workflow to build generic ChromeOS image for amd64 devices with Google Play Store support.
+Script to build generic ChromeOS image for amd64 devices with Google Play Store support.
 
 The generic ChromeOS flex do not support Google Play Store for running Android apps. This script will build a generic ChromeOS image with Google Play Store support for amd64 devices.
 
@@ -22,7 +22,29 @@ Codename for ChromeOS build. Choose one of the following options based on your p
 - AMD Processor:
     - Ryzen: gumboz
 
-## Usage
+## Local Usage
+
+You will need debian based linux distro to run the script. You can use Ubuntu in WSL on Windows.
+
+1. Clone this repository.
+   ```shell
+   git clone https://github.com/rabilrbl/ChromeOS.git
+   ```
+2. Switch to the repository directory.
+   ```shell
+   cd ChromeOS
+   ```
+3. Give execute permission to the script.
+   ```shell
+   chmod +x build.sh
+   ```
+4. Run the script.
+   ```shell
+    ./build.sh <code_name> # Replace <code_name> with the codename of the ChromeOS build you want to build.
+    ```
+5. Once the build is complete, the image will be available at `chromeos/chromeos.img`.
+
+## GitHub Actions Usage
 
 1. Fork this repository.
 2. Goto your GitHub profile and click on the repository you forked.
