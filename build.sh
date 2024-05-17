@@ -105,6 +105,7 @@ download_brunch() {
     aria2c -x 16 -o brunch.tar.gz $link
     echo "Download completed"
     echo "Extracting brunch"
+    mkdir -p brunch
     tar -xzvf brunch.tar.gz -C brunch
     echo "Extraction completed"
     echo "Deleting downloaded tar.gz file"
