@@ -18,7 +18,7 @@ on:
                     # AMD Processor
                     Ryzen: gumboz
                 required: true
-                options: [samus, leona, shyvana, jinlon, voxel, gumboz]
+                options: [voxel, gumboz, jinlon, shyvana, leona, samus]
 
 jobs:
     build:
