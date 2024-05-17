@@ -10,9 +10,9 @@ is_sudo_available() {
 
 install_dependencies() {
     if [ $(is_sudo_available) -eq 1 ]; then
-        sudo apt update && sudo apt -y install pv cgpt tar unzip
+        sudo apt update && sudo apt -y install pv cgpt tar unzip aria2
     else
-        apt update && apt -y install pv cgpt tar unzip
+        apt update && apt -y install pv cgpt tar unzip aria2
     fi
 }
 
@@ -79,7 +79,7 @@ download_chromeos() {
     fi
     echo "Downloading Chrome OS for $code_name"
     echo "Link: $link"
-    curl -L -o chromeos.zip --progress-bar $link
+    aria2c -x 16 -o chromeos.zip $link
     echo "Download completed"
     echo "Extracting Chrome OS"
     unzip -o chromeos.zip
@@ -102,7 +102,7 @@ download_brunch() {
     fi
     echo "Downloading brunch"
     echo "Link: $link"
-    curl -L -o brunch.tar.gz --progress-bar $link
+    aria2c -x 16 -o brunch.tar.gz $link
     echo "Download completed"
     echo "Extracting brunch"
     tar -xzvf brunch.tar.gz
