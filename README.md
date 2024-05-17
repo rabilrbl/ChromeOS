@@ -1,4 +1,4 @@
-# Build ChromeOS
+# ChromeOS Build Script
 
 Script to build generic ChromeOS image for amd64 devices with Google Play Store support.
 
