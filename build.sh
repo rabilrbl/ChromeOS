@@ -82,7 +82,7 @@ download_chromeos() {
     aria2c -x 16 -o chromeos.zip $link
     echo "Download completed"
     echo "Extracting Chrome OS"
-    unzip -o chromeos.zip
+    unzip -o chromeos.zip -d chromeos
     echo "Extraction completed"
     echo "Deleting downloaded zip file"
     rm -f chromeos.zip
