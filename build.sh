@@ -151,15 +151,25 @@ build_chromos_img() {
     fi
     echo "Building chromeos.img..."
     # build chromeos.img
-    if [ $(is_sudo_available) -eq 1 ]; then
-        sudo bash chromeos-install.sh -src chromeos.bin -dst chromeos.img
+    # if variable CHROMEOS_IMG_FILENAME is set, then use that as the filename else use chromeos.img
+    # verify CHROMEOS_IMG_FILENAME contains .img
+    if [ -z "$CHROMEOS_IMG_FILENAME" ]; then
+        CHROMEOS_IMG_FILENAME="chromeos.img"
     else
-        bash chromeos-install.sh -src chromeos.bin -dst chromeos.img
+        if [[ ! "$CHROMEOS_IMG_FILENAME" == *".img" ]]; then
+            echo "CHROMEOS_IMG_FILENAME should contain .img"
+            exit 1
+        fi
     fi
-    if [ -f chromeos.img ]; then
-        echo "chromeos.img created successfully"
+    if [ $(is_sudo_available) -eq 1 ]; then
+        sudo bash chromeos-install.sh -src chromeos.bin -dst $CHROMEOS_IMG_FILENAME
     else
-        echo "Failed to create chromeos.img"
+        bash chromeos-install.sh -src chromeos.bin -dst $CHROMEOS_IMG_FILENAME
+    fi
+    if [ -f $CHROMEOS_IMG_FILENAME ]; then
+        echo "$CHROMEOS_IMG_FILENAME created successfully"
+    else
+        echo "Failed to create $CHROMEOS_IMG_FILENAME"
     fi
 }
 
