@@ -89,6 +89,8 @@ download_chromeos() {
     echo "Downloaded and extracted Chrome OS for $code_name"
 }
 
+D_BRUNCH_COUNT = 0
+
 download_brunch() {
     # Download latest brunch from https://github.com/sebanc/brunch
     # Release page: https://api.github.com/repos/sebanc/brunch/releases/latest
@@ -97,8 +99,15 @@ download_brunch() {
     local response=$(curl -s $url)
     local link=$(echo $response | sed -n 's/.*"browser_download_url": "\([^"]*\.tar\.gz\)".*/\1/p')
     if [ -z "$link" ]; then
-        echo "No valid links found"
-        exit 1
+        if [ $D_BRUNCH_COUNT -eq 2 ]; then
+            echo "Failed to download brunch"
+            exit 1
+        else
+            echo "Failed to download brunch. Retrying..."
+            D_BRUNCH_COUNT=$((D_BRUNCH_COUNT+1))
+            download_brunch
+            return
+        fi
     fi
     echo "Downloading brunch"
     echo "Link: $link"
