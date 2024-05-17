@@ -10,7 +10,7 @@ is_sudo_available() {
 
 install_dependencies() {
     if [ $(is_sudo_available) -eq 1 ]; then
-        sudo apt update && sudo apt -y install pv cgpt tar unzip aria2
+        sudo apt update && sudo apt -y install pv cgpt tar unzip aria2 7zip
     else
         apt update && apt -y install pv cgpt tar unzip aria2
     fi
@@ -182,6 +182,9 @@ build_chromos_img() {
     else
         echo "Failed to create $CHROMEOS_IMG_FILENAME"
     fi
+    # compress chromeos.img to chromeos.img.7z
+    echo "Compressing $CHROMEOS_IMG_FILENAME to $CHROMEOS_IMG_FILENAME.7z"
+    7z a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on $CHROMEOS_IMG_FILENAME.7z $CHROMEOS_IMG_FILENAME
 }
 
 # Execute functions in order

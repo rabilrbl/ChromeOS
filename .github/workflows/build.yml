@@ -43,8 +43,8 @@ jobs:
       - name: Upload File
         if: success()
         run: |
-          mv chromeos/chromeos.img chromeos-${{env.RELEASE_VERSION}}-${{ matrix.codename }}.img
+          mv chromeos/chromeos.img.7z chromeos-${{env.RELEASE_VERSION}}-${{ matrix.codename }}.7z
           ls -l
-          gh release upload ${{env.RELEASE_VERSION}} chromeos-${{env.RELEASE_VERSION}}-${{ matrix.codename }}.img
+          gh release upload ${{env.RELEASE_VERSION}} chromeos-${{env.RELEASE_VERSION}}-${{ matrix.codename }}.7z
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
