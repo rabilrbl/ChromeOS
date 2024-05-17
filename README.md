@@ -49,6 +49,7 @@ You will need debian based linux distro to run the script. You can use Ubuntu in
     ./build.sh <code_name> # Replace <code_name> with the codename of the ChromeOS build you want to build.
     ```
 5. Once the build is complete, the image will be available at `chromeos/chromeos.img`.
+6. Use a tool like [Balena Etcher](https://www.balena.io/etcher/) to flash the image to a USB drive.
 
 ## GitHub Actions Usage
 
@@ -60,3 +61,9 @@ You will need debian based linux distro to run the script. You can use Ubuntu in
 6. Click on the `Run workflow` button.
 7. Wait for the build to complete.
 8. Download the build from the artifacts section of the workflow.
+
+## Credits
+
+- [Techy Druid YouTube Channel](https://www.youtube.com/@TechyDruid) for the tutorial on building ChromeOS image. You can check their tutorial videos.
+- [cros.tech](https://cros.tech/) for providing recovery images.
+- [brunch](https://github.com/sebanc/brunch) for ChromeOS on x86_64 PC
