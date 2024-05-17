@@ -105,7 +105,7 @@ download_brunch() {
     curl -L -o brunch.tar.gz --progress-bar $link
     echo "Download completed"
     echo "Extracting brunch"
-    tar -xzf brunch.tar.gz
+    tar -xzvf brunch.tar.gz
     echo "Extraction completed"
     echo "Deleting downloaded tar.gz file"
     rm -f brunch.tar.gz
