@@ -1,0 +1,23 @@
+name: Build ChromeOS
+
+on:
+  workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+    
+        steps:
+        - name: Checkout code
+          uses: actions/checkout@v4
+        
+        - name: Build ChromeOS
+          run: |
+            chmod +x build.sh
+            ./build.sh
+        
+        - name: Upload build artifacts
+          if: success()
+          uses: actions/upload-artifact@v4
+          with:
+            path: chromeos/chromeos.img
