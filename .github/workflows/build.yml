@@ -12,6 +12,9 @@ jobs:
     outputs:
       version: ${{ steps.create_release.outputs.version }}
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
       - name: Create release
         id: create_release
         run: |
