@@ -1,2 +1,5 @@
 brunch/
 chromeos/
+*.img
+*.7z
+*.zip
