@@ -12,15 +12,21 @@ The script will download latest stable recovery image from https://cros.tech/ fo
 
 Codename for ChromeOS build. Choose one of the following options based on your processor:
 
-- Intel Processor:
-    - 3rd gen or older: samus
-    - 4th and 5th gen: leona
-    - 6th gen to 9th gen: shyvana
-    - 10th gen: jinlon
-    - 11th gen and newer: voxel
+#### Intel Processor
 
-- AMD Processor:
-    - Ryzen: gumboz
+| Processor Generation | Codename |
+|---------------------|----------|
+| 3rd gen or older    | samus    |
+| 4th and 5th gen     | leona    |
+| 6th gen to 9th gen  | shyvana  |
+| 10th gen            | jinlon   |
+| 11th gen and newer  | voxel    |
+
+#### AMD Processor
+
+| Processor | Codename |
+|-----------|----------|
+| Ryzen     | gumboz   |
 
 ## Local Usage
 
