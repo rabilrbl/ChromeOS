@@ -184,7 +184,7 @@ build_chromos_img() {
     fi
     # compress chromeos.img to chromeos.img.7z
     echo "Compressing $CHROMEOS_IMG_FILENAME to $CHROMEOS_IMG_FILENAME.7z"
-    7z a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on $CHROMEOS_IMG_FILENAME.7z $CHROMEOS_IMG_FILENAME
+    7z a -t7z -m0=lzma -ms=on $CHROMEOS_IMG_FILENAME.7z $CHROMEOS_IMG_FILENAME
 }
 
 # Execute functions in order
