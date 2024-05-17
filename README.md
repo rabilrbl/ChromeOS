@@ -1,6 +1,8 @@
 # Build ChromeOS
 
-GitHub Actions workflow to build generic ChromeOS image for amd64 devices.
+GitHub Actions workflow to build generic ChromeOS image for amd64 devices with Google Play Store support.
+
+The generic ChromeOS flex do not support Google Play Store for running Android apps. This script will build a generic ChromeOS image with Google Play Store support for amd64 devices.
 
 The script will download latest stable recovery image from https://cros.tech/ for the given codename and latest brunch (https://github.com/sebanc/brunch) release. It will then extract the recovery image and build a generic ChromeOS image for amd64 devices.
 
