@@ -60,7 +60,8 @@ You will need debian based linux distro to run the script. You can use Ubuntu in
 5. Give the codename of the ChromeOS build you want to build.
 6. Click on the `Run workflow` button.
 7. Wait for the build to complete.
-8. Download the image from the artifacts section of the workflow.
+8. Download the zip from the artifacts section of the workflow.
+9. Extract the zip and use a tool like [Balena Etcher](https://www.balena.io/etcher/) to flash the image to a USB drive.
 
 ## Credits
 
