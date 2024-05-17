@@ -65,5 +65,5 @@ You will need debian based linux distro to run the script. You can use Ubuntu in
 ## Credits
 
 - [Techy Druid YouTube Channel](https://www.youtube.com/@TechyDruid) for the tutorial on building ChromeOS image. You can check their tutorial videos.
-- [cros.tech](https://cros.tech/) for providing recovery images.
-- [brunch](https://github.com/sebanc/brunch) for ChromeOS on x86_64 PC
+- [Brunch Project](https://github.com/sebanc/brunch) for supporting ChromeOS on x86_64 PC
+- [cros.tech](https://cros.tech/) for providing ChromeOS images.
