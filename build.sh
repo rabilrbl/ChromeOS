@@ -12,6 +12,13 @@ install_dependencies() {
     ${with_sudo}apt update && ${with_sudo}apt -y install pv cgpt tar unzip aria2
 }
 
+# clean folder brunch and chromeos if they exist
+clean_previous_run() {
+    [ -d brunch ] && rm -rf brunch
+    [ -d chromeos ] && rm -rf chromeos
+    echo "Cleaned previous run"
+}
+
 # Function to download Chrome OS
 download_chromeos() {
     local code_name=$1
@@ -125,7 +132,7 @@ if [ $? -eq 0 ]; then
         echo "Please provide Chrome OS code name"
         exit 1
     fi
-    download_chromeos "$1" && download_brunch && post_download_setup && build_chromos_img
+    clean_previous_run && download_chromeos "$1" && download_brunch && post_download_setup && build_chromos_img
 else
     echo "Failed to install dependencies"
     exit 1
