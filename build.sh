@@ -201,13 +201,17 @@ if [ $? -eq 0 ]; then
                 build_chromos_img
             else
                 echo "Failed to setup post download"
+                exit 1
             fi
         else
             echo "Failed to download brunch"
+            exit 1
         fi
     else
         echo "Failed to download Chrome OS"
+        exit 1
     fi
 else
     echo "Failed to install dependencies"
+    exit 1
 fi
