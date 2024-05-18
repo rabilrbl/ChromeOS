@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 is_sudo_available() {
     if [ -z "$(command -v sudo)" ]; then
