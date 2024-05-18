@@ -12,23 +12,6 @@ install_dependencies() {
     ${with_sudo}apt update && ${with_sudo}apt -y install pv cgpt tar unzip aria2
 }
 
-# Function to build Chrome OS image
-build_chromeos() {
-    # Verify chromeos-install.sh and chromeos.bin exist
-    if [ ! -f chromeos-install.sh ] || [ ! -f chromeos.bin ]; then
-        echo "chromeos-install.sh or chromeos.bin not found"
-        exit 1
-    fi
-
-    # Check if bash is available
-    command -v bash &>/dev/null || {
-        echo "bash is not available. Please install bash"
-        exit 1
-    }
-
-    ${with_sudo}bash chromeos-install.sh -src chromeos.bin -dst chromeos.img
-}
-
 # Function to download Chrome OS
 download_chromeos() {
     local code_name=$1
